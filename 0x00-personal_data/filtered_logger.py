@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 '''Logger'''
 import re
 
@@ -11,4 +11,3 @@ def filter_datum(fields, redaction, message, separator):
     '''Filters a log entry'''
     extract, replace = (patterns["extract"], patterns["replace"])
     return re.sub(extract(fields, separator), replace(redaction), message)
-
