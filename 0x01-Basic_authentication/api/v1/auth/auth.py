@@ -5,6 +5,7 @@ from typing import List, TypeVar
 
 
 class Auth:
+    '''Auth class template'''
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         '''checks whether urls require authentication'''
         return False
