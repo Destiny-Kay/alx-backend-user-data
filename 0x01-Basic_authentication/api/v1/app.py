@@ -32,7 +32,7 @@ def filter_requests(request):
         pass
     path_list = ['/api/v1/status/', '/api/v1/unauthorized/',
                  '/api/v1/forbidden/']
-    if auth.require_auth(request.path, path_list) is False:
+    if not auth.require_auth(request.path, path_list):
         return
     if auth.authorization_header(request) is None:
         abort(401)
