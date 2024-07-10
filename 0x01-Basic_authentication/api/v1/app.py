@@ -46,7 +46,7 @@ def forbidden(error) -> str:
 
 
 @app.before_request
-def filter_requests(request):
+def filter_requests():
     '''
     Filters requests before they are served by views
     '''
