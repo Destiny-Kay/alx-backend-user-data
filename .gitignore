@@ -1,2 +1,5 @@
 .venv/
 .env
+__pycache__/
+main*
+.db_User.json
