@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 '''session views module'''
 from api.v1.views import app_views
-from flask import jsonify, request
+from flask import jsonify, request, abort
 from typing import Tuple
 from models.user import User
 import os
@@ -29,3 +29,12 @@ def login() -> Tuple[str, int]:
     res = jsonify(users[0].to_json())
     res.set_cookie(os.getenv("SESSION_NAME"), session_id)
     return res
+
+
+@app_views.route('/api/v1/auth_session/logout', strict_slashes=False, methods=['DELETE'])
+def logout():
+    '''logout view'''
+    from api.v1.app import auth
+    if not auth.destroy_session(request):
+        abort(404)
+    return {}
