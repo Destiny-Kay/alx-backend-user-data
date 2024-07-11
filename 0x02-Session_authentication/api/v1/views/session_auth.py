@@ -31,10 +31,12 @@ def login() -> Tuple[str, int]:
     return res
 
 
-@app_views.route('/api/v1/auth_session/logout', strict_slashes=False, methods=['DELETE'])
+@app_views.route('/api/v1/auth_session/logout',
+                 strict_slashes=False, methods=['DELETE'])
 def logout():
     '''logout view'''
     from api.v1.app import auth
-    if not auth.destroy_session(request):
+    is_destroyed = auth.destroy_session(request)
+    if not is_destroyed:
         abort(404)
-    return {}
+    return jsonify({})
