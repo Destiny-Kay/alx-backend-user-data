@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 '''session views module'''
 from api.v1.views import app_views
-from flask import jsonify
+from flask import jsonify, request
 from typing import Tuple
 from models.user import User
 import os
 
 
 @app_views.route('/auth_session/login', strict_slashes=False, methods=['POST'])
-def login(request) -> Tuple[str, int]:
+def login() -> Tuple[str, int]:
     '''handles all routes for session authentication'''
     email = request.form.get('email')
     password = request.form.get('password')
